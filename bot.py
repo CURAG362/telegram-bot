@@ -4,13 +4,13 @@ import json
 import time
 from datetime import datetime
 
-# ===== ТОКЕН БОТА =====
-TOKEN = "8613094005:AAFsr2hDtUVsZEBIq9qVzyegkEYbjhXO3Hg"
+# ===== ТОКЕН БОТА (НОВЫЙ!) =====
+TOKEN = "8613094005:AAFGNfKMhsncrV_0wgjc0g1aSf9McxqzXAA"  # 👈 ВСТАВЬ ТОТ, ЧТО ДАЛ @BotFather ПОСЛЕ /token
 bot = telebot.TeleBot(TOKEN)
 
 # ===== ID ГРУПП =====
-GROUP_1_ID = -1003898085095  # ID твоей группы  # ID твоей группы
-GROUP_2_ID = -1002993547124  # ID группы "Рей"
+GROUP_1_ID = -1003898085095
+GROUP_2_ID = -1002993547124
 
 # ===== ФАЙЛЫ ДЛЯ ХРАНЕНИЯ =====
 USER_FILE = "users.json"
@@ -64,14 +64,7 @@ def forward_message(m):
         target_chat = GROUP_1_ID
         prefix = "📩 [Из группы Рей]\n\n"
     else:
-        return
-    
-    # Сохраняем статистику
-    user_id = str(m.from_user.id)
-    if user_id not in stats:
-        stats[user_id] = {"messages": 0, "first_seen": str(datetime.now())}
-    stats[user_id]["messages"] += 1
-    save_json(STATS_FILE, stats)
+        return  # Игнорируем другие чаты
     
     # Получаем имя отправителя
     name = m.from_user.first_name or "Пользователь"
