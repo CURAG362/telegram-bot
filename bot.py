@@ -20,7 +20,7 @@ def run_web():
 threading.Thread(target=run_web, daemon=True).start()
 
 # ===== ТОКЕН =====
-TOKEN = "8613094005:AAFsr2hDtUVsZEBIq9qVzyegkEYbjhXO3Hg"
+TOKEN = "8613094005:AAFGNfKMhsncrV_0wgjc0g1aSf9McxqzXAA"
 bot = telebot.TeleBot(TOKEN)
 
 # ===== ID ГРУПП =====
