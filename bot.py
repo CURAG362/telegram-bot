@@ -1,5 +1,23 @@
 import telebot
 import os
+import time
+import threading
+from flask import Flask
+
+# ===== ФАКЕЛЬНЫЙ ВЕБ-СЕРВЕР ДЛЯ RENDER =====
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Бот работает!"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
+
+# Запускаем веб-сервер в фоновом потоке
+threading.Thread(target=run_web, daemon=True).start()
+import os
 import json
 import time
 from datetime import datetime
